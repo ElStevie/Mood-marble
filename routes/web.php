@@ -35,3 +35,7 @@ Route::post("/users/{user}", [UsersController::class, 'destroy'])->name("users.d
 */
 
 Route::resource('users', UsersController::class);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
