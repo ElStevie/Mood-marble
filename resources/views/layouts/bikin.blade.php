@@ -45,13 +45,13 @@
 
         <nav class="nav-menu d-none d-lg-block">
             <ul>
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/#about">About</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="{{ route("users.index") }}">Users</a></li>
+                <li class="active"><a href="{{ route("login") }}">Login</a></li>
             </ul>
         </nav><!-- .nav-menu -->
 
-        <a href="{{ route("users.create") }}" class="get-started-btn">Get Started</a>
+        <a href="{{ route("register") }}" class="get-started-btn">Get Started</a>
 
     </div>
 </header><!-- End Header -->
