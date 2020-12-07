@@ -19,6 +19,10 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    public function moods() {
+        return $this->hasMany(Mood::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

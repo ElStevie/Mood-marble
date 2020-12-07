@@ -8,4 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Mood extends Model
 {
     use HasFactory;
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    protected $hidden = [
+        'pivot'
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at'
+    ];
+
+    protected $fillable = [
+        "user_id",
+        "mood"
+    ];
 }
