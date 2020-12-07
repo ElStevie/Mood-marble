@@ -13,9 +13,9 @@ class Mood extends Model
         return $this->belongsTo(User::class);
     }
 
-    protected $hidden = [
-        'pivot'
-    ];
+    public function getMoodAttribute($value) {
+        return ucfirst($value);
+    }
 
     protected $dates = [
         'created_at',

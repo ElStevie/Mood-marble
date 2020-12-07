@@ -18,8 +18,8 @@ class MoodController extends Controller
     public function index()
     {
         $moods = Auth::user()->moods;
-        $today = Carbon::today()->toDateString();
-        $todays_mood = Mood::all()->where("created_at", "like", $today . "%")->toArray();
+        $todays_mood = Auth::user()->moods()
+            ->where("created_at", "like",Carbon::today()->toDateString() . "%")->get()->toArray();
         if (empty($todays_mood)) {
             return view('moods.index', compact('moods'));
         } else {
@@ -48,8 +48,7 @@ class MoodController extends Controller
         $mood = new Mood();
         $mood->user_id = Auth::id();
         $mood->mood = $request->mood;
-        $mood->created_at = $mood->updated_at = Carbon::now();
-
+        //$mood->created_at = $mood->updated_at = Carbon::now();
 
         $mood->save();
         return redirect()->route("moods.index");
@@ -63,7 +62,7 @@ class MoodController extends Controller
      */
     public function show(Mood $mood)
     {
-        $today = Carbon::today();
+        $today = Carbon::today()->toDateString();
         return view('moods.show', compact('mood', 'today'));
     }
 
@@ -87,11 +86,9 @@ class MoodController extends Controller
      */
     public function update(Request $request, Mood $mood)
     {
-        $attributes = array_merge(
-            $request->except("_token", "_method"),
-            ['updated_at' => Carbon::now()]
-        );
-        Mood::where('id', $mood->id)->update($attributes);
+        if ($mood->created_at->toDateString() == Carbon::today()->toDateString()) {
+            Mood::where('id', $mood->id)->update($request->except("_token", "_method"));
+        }
 
         return redirect()->route("moods.index");
     }

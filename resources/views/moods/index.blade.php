@@ -13,7 +13,7 @@
         @foreach($moods as $mood)
             <tr>
                 <td><a href="{{ route('moods.show', [$mood->id]) }}">{{ $mood->mood }}</a></td>
-                <td>{{ explode(" ", $mood->created_at)[0] }}</td>
+                <td>{{ $mood->created_at->format("Y-m-d") }}</td>
             </tr>
         @endforeach
     </tbody>
