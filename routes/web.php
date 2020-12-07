@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MoodController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 
@@ -35,6 +36,8 @@ Route::post("/users/{user}", [UsersController::class, 'destroy'])->name("users.d
 */
 
 Route::resource('users', UsersController::class);
+
+Route::resource('moods', MoodController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
