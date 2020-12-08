@@ -35,11 +35,11 @@
                             </p>
                         </div>
                         <select name="mood" id="mood" class="form-control text-center">
-                            <option {{ isset($mood) && $mood->mood == "excellent" ? "selected" : ""}} value="excellent">Excellent!</option>
-                            <option {{ isset($mood) && $mood->mood == "good" ? "selecteerd" : "" }} value="good">Good :)</option>
-                            <option {{ isset($mood) && $mood->mood == "meh" ? "selected" : "" }} value="meh">Meh</option>
-                            <option {{ isset($mood) && $mood->mood == "bad" ? "selected" : "" }} value="bad">Bad :(</option>
-                            <option {{ isset($mood) && $mood->mood == "terrible" ? "selected" : "" }} value="terrible">Terrible</option>
+                            <option {{ isset($mood) && $mood->mood == "Excellent" ? "selected" : ""}} value="excellent">Excellent!</option>
+                            <option {{ isset($mood) && $mood->mood == "Good" ? "selecteerd" : "" }} value="good">Good :)</option>
+                            <option {{ isset($mood) && $mood->mood == "Meh" ? "selected" : "" }} value="meh">Meh</option>
+                            <option {{ isset($mood) && $mood->mood == "Bad" ? "selected" : "" }} value="bad">Bad :(</option>
+                            <option {{ isset($mood) && $mood->mood == "Terrible" ? "selected" : "" }} value="terrible">Terrible</option>
                         </select>
                         <div class="text-center mt-4">
                             <button type="submit">Save</button>
