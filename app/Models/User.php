@@ -25,6 +25,10 @@ class User extends Authenticatable
         return $this->hasMany(Mood::class);
     }
 
+    public function setNameAttribute($value) {
+        return $this->attributes['name'] = mb_strtoupper($value, 'UTF-8');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
