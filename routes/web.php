@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 /* Probably would get used later...
-Route::get("/users", [UsersController::class, 'index'])->name("users.index");
+index
 
 Route::get("/users/signup", [UsersController::class, 'create'])->name("users.create");
 
@@ -35,9 +35,10 @@ Route::post("/users/{user}", [UsersController::class, 'update'])->name("users.up
 Route::post("/users/{user}", [UsersController::class, 'destroy'])->name("users.destroy");
 */
 
-Route::resource('users', UsersController::class);
+// Route::resource('users', UsersController::class); // Only index needed (below)
+Route::get("/users", [UsersController::class, 'index'])->name("users.index");
 
-Route::resource('moods', MoodController::class);
+Route::resource('moods', MoodController::class)->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
