@@ -5,6 +5,7 @@
 @endsection
 
 @section("innerContent")
+    @include('partials.notification-alert')
     <h1 class="text-center my-lg-5">Mood register info</h1>
     @if (empty($todays_mood))
         <h3 class="text-danger text-center mb-xl-5">You haven't register your mood for today. <a href="{{ route('moods.create') }}">Do it now!</a></h3>

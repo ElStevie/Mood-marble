@@ -21,7 +21,9 @@ class MoodController extends Controller
         $todays_mood = Auth::user()->moods()
             ->where("created_at", "like",Carbon::today()->toDateString() . "%")->get()->toArray();
         if (empty($todays_mood)) {
-            return view('moods.index', compact('moods'));
+            return view('moods.index', compact('moods'))
+                ->with('message', "Don't forget to update your mood!")
+                ->with('type', "alert-warning");
         } else {
             return view('moods.index', compact('moods', 'todays_mood'));
         }
@@ -51,7 +53,10 @@ class MoodController extends Controller
         //$mood->created_at = $mood->updated_at = Carbon::now();
 
         $mood->save();
-        return redirect()->route("moods.index");
+        return redirect()->route("moods.index")->with([
+            "message" => "Mood saved successfully!",
+            "type" => "alert-success",
+        ]);
     }
 
     /**
@@ -90,7 +95,10 @@ class MoodController extends Controller
             Mood::where('id', $mood->id)->update($request->except("_token", "_method"));
         }
 
-        return redirect()->route("moods.index");
+        return redirect()->route("moods.index")->with([
+            "message" => "Mood updated successfully!",
+            "type" => "alert-success",
+        ]);
     }
 
     /**
