@@ -45,13 +45,17 @@
 
         <nav class="nav-menu d-none d-lg-block">
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="{{ route("users.index") }}">Users</a></li>
-                <li class="active"><a href="{{ route("login") }}">Login</a></li>
+                @if (\Illuminate\Support\Facades\Auth::user() != null)
+                    @include('headers.user')
+                @else
+                    @include('headers.guest')
+                @endif
             </ul>
         </nav><!-- .nav-menu -->
 
-        <a href="{{ route("register") }}" class="get-started-btn">Get Started</a>
+        @if (\Illuminate\Support\Facades\Auth::user() == null)
+            <a href="{{ route("register") }}" class="get-started-btn">Get Started</a>
+        @endif
 
     </div>
 </header><!-- End Header -->
