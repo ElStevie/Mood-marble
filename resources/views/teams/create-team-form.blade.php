@@ -1,4 +1,4 @@
-<x-jet-form-section submit="createTeam">
+<!--<x-jet-form-section submit="createTeam">
     <x-slot name="title">
         {{ __('Team Details') }}
     </x-slot>
@@ -33,4 +33,50 @@
             {{ __('Create') }}
         </x-jet-button>
     </x-slot>
-</x-jet-form-section>
+</x-jet-form-section> -->
+@extends("layouts.innerPage")
+
+@section("currentPage")
+    <li>Create New Team</li>
+@endsection
+
+@section("innerContent")
+    <section id="contact" class="contact section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Team Details</h2>
+                <p>Create a new team to collaborate with others on projects.</p>
+            </div>
+
+            @include('partials.form-errors')
+
+            <div class="row mt-4">
+                <div class="col-lg mt-4 mt-md-0">
+                    <form action="{{ route('teams.create') }}" method="POST" role="form" class="php-email-form">
+                        @csrf
+                        <div class="form-row text-sm-center">
+                            <h3>Team Owner</h3>
+                        </div>
+                        <div class="form-row text-center">
+                            <p>{{ \Illuminate\Support\Facades\Auth::user()->name }}</p>
+                        </div>
+                        <div class="form-row text-center">
+                            <p class="small">{{ \Illuminate\Support\Facades\Auth::user()->email }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Team Name</label>
+                            <input type="text" class="form-control" name="name" id="name"/>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit">Create</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+@endsection
+
