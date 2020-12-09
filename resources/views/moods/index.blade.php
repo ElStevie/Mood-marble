@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($moods as $mood)
+            @foreach($moods->sortByDesc('created_at') as $mood)
                 <tr>
                     <td><a href="{{ route('moods.show', [$mood->id]) }}">{{ $mood->mood }}</a></td>
                     <td>{{ $mood->created_at->format("Y-m-d") }}</td>
