@@ -14,6 +14,12 @@ Mood marble es una aplicación cuyo propósito es llevar un registro diario del 
 6. Generar la llave de la aplicación: `php artisan key:generate`
 7. Ejecutar las migraciones: `php artisan migrate`
 
+### Extra
+
+Adicionalmente, se pueden ejecutar los seeders de Usuarios: `php artisan db:seed --class=UserSeeder`.
+
+Se cargan **30 Usuarios**, **cada uno** con un **Equipo personal**; a los primeros cinco Equipos se les asigna los 25 Usuarios restantes, es decir, los **primeros cinco** equipos cuentan con **6 miembros** (propietario y más miembros); cada Usuario cuenta con los Estados de ánimo de la última semana (**7 Estados de ánimo por Usuario**).
+
 ---
 
 ### Desarrollado por
