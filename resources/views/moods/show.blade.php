@@ -16,7 +16,7 @@
                 <a class="btn btn-primary btn-lg" href="{{ route('moods.edit', [$mood->id]) }}" role="button">Edit it</a>
             </p>
         @else
-            <p class="d-inline">Last update: <p class="d-inline text-primary">{{ $mood->updated_at->toDateString() }}.</p></p>
+            <p class="d-inline">Last update: <p class="d-inline text-primary">{{ $mood->updated_at->toTimeString() }}.</p></p>
         @endif
     </div>
 
