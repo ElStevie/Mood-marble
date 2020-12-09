@@ -6,9 +6,16 @@
 
 @section("innerContent")
     @include('partials.notification-alert')
-    <h1 class="text-center my-lg-5">Mood register info</h1>
+    @can ('view-team-members-moods')
+        @include('moods.team-members-moods')
+    @endcan
+
+    <h2 class="text-center my-5">
+        Mood
+        <small class="text-muted">registers</small>
+    </h2>
     @if (empty($todays_mood))
-        <h3 class="text-danger text-center mb-xl-5">You haven't register your mood for today. <a href="{{ route('moods.create') }}">Do it now!</a></h3>
+        <h3 class="text-danger text-center mx-5">You haven't register your mood for today. <a href="{{ route('moods.create') }}">Do it now!</a></h3>
     @endif
     <table class="table table-hover class text-center">
         <thead>

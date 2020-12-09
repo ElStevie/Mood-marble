@@ -19,7 +19,7 @@ class MoodController extends Controller
     {
         $moods = Auth::user()->moods;
         $todays_mood = Auth::user()->moods()
-            ->where("created_at", "like",Carbon::today()->toDateString() . "%")->get()->toArray();
+            ->where("created_at", "like", Carbon::today()->toDateString() . "%")->get()->toArray();
         if (empty($todays_mood)) {
             return view('moods.index', compact('moods'))
                 ->with('message', "Don't forget to update your mood!")
