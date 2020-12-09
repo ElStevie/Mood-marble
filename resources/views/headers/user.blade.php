@@ -12,7 +12,7 @@
                             @csrf
                             @method('PUT')
                             <input type="hidden" name="team_id" value="{{ $team->id }}">
-                            <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">{{ ($team == \Illuminate\Support\Facades\Auth::user()->currentTeam ? '@ ' : '') .  $team->name }}</a>
+                            <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">{{ ($team->id == \Illuminate\Support\Facades\Auth::user()->currentTeam->id ? '@ ' : '') .  $team->name }}</a>
                         </form>
                     </li>
                  @endforeach

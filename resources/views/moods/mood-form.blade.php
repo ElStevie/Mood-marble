@@ -36,7 +36,7 @@
                         </div>
                         <select name="mood" id="mood" class="form-control text-center">
                             <option {{ isset($mood) && $mood->mood == "Excellent" ? "selected" : ""}} value="excellent">Excellent!</option>
-                            <option {{ isset($mood) && $mood->mood == "Good" ? "selecteerd" : "" }} value="good">Good :)</option>
+                            <option {{ isset($mood) && $mood->mood == "Good" ? "selected" : "" }} value="good">Good :)</option>
                             <option {{ isset($mood) && $mood->mood == "Meh" ? "selected" : "" }} value="meh">Meh</option>
                             <option {{ isset($mood) && $mood->mood == "Bad" ? "selected" : "" }} value="bad">Bad :(</option>
                             <option {{ isset($mood) && $mood->mood == "Terrible" ? "selected" : "" }} value="terrible">Terrible</option>
